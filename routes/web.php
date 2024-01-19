@@ -4,7 +4,7 @@ use App\Http\Controllers\GastosController;
 use App\Http\Controllers\AlimentacaoController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.dashboard');
 });
 
 Route::resource('treinos', TreinoController::class)->parameters(['treinos' => 'treino']);

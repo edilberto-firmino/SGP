@@ -15,8 +15,8 @@
                 <button class="btn btn-secondary mb-2" data-toggle="collapse" data-target="#treinosGastos">Rotinas</button>
                 <div class="collapse" id="treinosGastos">
                     <a href="{{ route('treinos.index') }}" class="btn btn-primary btn-block mb-2">Treinos</a>
+                    <a href="{{ route('alimentacoes.index') }}" class="btn btn-primary btn-block">Alimentação</a>
                     <a href="{{ route('gastos.index') }}" class="btn btn-primary btn-block">Gastos</a>
-                    <a href="{{ route('alimentacoes.index') }}" class="btn btn-primary btn-block">Alimentações</a>
                 </div>
             </div>
             <div class="col-md-9">
