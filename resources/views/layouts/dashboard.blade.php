@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,19 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" rel="stylesheet">
 </head>
+
 <body>
 
     <div class="container mt-3">
         <div class="row">
             <div class="col-md-3">
-                <button class="btn btn-secondary mb-2" data-toggle="collapse" data-target="#treinosGastos">Rotinas</button>
+                <button class="btn btn-secondary mb-2" data-toggle="collapse"
+                    data-target="#treinosGastos">Rotinas</button>
+                <button class="btn btn-secondary mb-2"
+                    onclick="window.location.href='{{ route('dashboard') }}'">Home</button>
+
                 <div class="collapse" id="treinosGastos">
-                    <a href="{{ route('treinos.index') }}" class="btn btn-primary btn-block mb-2">Treinos</a>
+                    <a href="{{ route('treinos.index') }}" class="btn btn-primary btn-block">Treinos</a>
                     <a href="{{ route('alimentacoes.index') }}" class="btn btn-primary btn-block">Alimentação</a>
                     <a href="{{ route('gastos.index') }}" class="btn btn-primary btn-block">Gastos</a>
                 </div>
@@ -32,4 +38,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     @stack('scripts')
 </body>
+
 </html>

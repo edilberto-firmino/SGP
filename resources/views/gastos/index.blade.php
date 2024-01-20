@@ -11,7 +11,7 @@
     @endif
 
     <!-- Botão para criar novo gasto -->
-    <a href="{{ route('gastos.create') }}" class="btn btn-success mb-3">Criar Novo Gasto</a>
+    <a href="{{ route('gastos.create') }}" class="btn btn-success mb-3">Novo Gasto</a>
 
     @if (count($gastos) > 0)
         <table class="table">

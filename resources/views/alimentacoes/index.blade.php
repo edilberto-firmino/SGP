@@ -11,7 +11,7 @@
     @endif
 
     <!-- Botão para criar nova alimentação -->
-    <a href="{{ route('alimentacoes.create') }}" class="btn btn-success mb-3">Criar Nova Alimentação</a>
+    <a href="{{ route('alimentacoes.create') }}" class="btn btn-success mb-3">Nova Alimentação</a>
 
     @if (count($alimentacoes) > 0)
         <table class="table">

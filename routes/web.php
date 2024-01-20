@@ -1,11 +1,11 @@
 <?php
+
 use App\Http\Controllers\TreinoController;
 use App\Http\Controllers\GastosController;
 use App\Http\Controllers\AlimentacaoController;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('layouts.dashboard');
-});
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('treinos', TreinoController::class)->parameters(['treinos' => 'treino']);
 

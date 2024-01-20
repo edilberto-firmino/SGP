@@ -4,45 +4,47 @@
 
 @section('content')
 
-    <a href="{{ route('treinos.create') }}" class="btn btn-primary">Novo Treino</a>
-    <div id="calendario" style="height: 500px;"></div>
+    <h2 class="mb-4">Lista de Treinos</h2>
 
-    @push('scripts')
-        <script>
-            $(document).ready(function () {
-                var modos = {
-                    'month': 'Mês',
-                    'agendaWeek': 'Semana',
-                    'agendaDay': 'Dia'
-                };
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
-                $('#calendario').fullCalendar({
-                    events: [
-                        @foreach($treinos as $treino)
-                            {
-                                title: '{{ $treino->descricao }}',
-                                start: '{{ $treino->data }}',
-                                url: '{{ route('treinos.show', $treino->id) }}'
-                            },
-                        @endforeach
-                    ],
-                    header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
-                    },
-                    views: {
-                        month: { buttonText: modos.month },
-                        agendaWeek: { buttonText: modos.agendaWeek },
-                        agendaDay: { buttonText: modos.agendaDay }
-                    },
-                    dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-                    dayNamesShort: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-                    buttonText: {
-                        today: 'Hoje'
-                    }
-                });
-            });
-        </script>
-    @endpush
+    <a href="{{ route('treinos.create') }}" class="btn btn-success mb-3">Novo Treino</a>
+
+    @if (count($treinos) > 0)
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <!-- Adicione mais colunas conforme necessário -->
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($treinos as $treino)
+                    <tr>
+                        <td>{{ $treino->data }}</td>
+                        <td>{{ $treino->descricao }}</td>
+                        <!-- Adicione mais colunas conforme necessário -->
+                        <td>
+                            <a href="{{ route('treinos.edit', $treino->id) }}" class="btn btn-primary">Editar</a>
+                            <a href="{{ route('treinos.show', $treino->id) }}" class="btn btn-info">Ver</a>
+                            <form action="{{ route('treinos.destroy', $treino->id) }}" method="POST" style="display:inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>Nenhum treino registrado ainda.</p>
+    @endif
+
 @endsection
